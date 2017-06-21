@@ -35,26 +35,34 @@ public class Update {
     }
 
     public boolean ButtonEvent(Button button, int x, int y){
-        count++;
-        if (logic.Update(x, y, turn)){
-            if (turn == 1){
-                button.setText("X");
-                return true;
-            }else{
-                button.setText("O");
-                return true;
-            }
-        }
-        if (turn == 1){
-            turn = 2;
-            button.setText("X");
-        }else{
-            turn = 1;
-            button.setText("O");
+
+        if(count == 9){
+            count++;
+            return false;
         }
 
-        if (count == 9){
-            return true;
+        if( button.getText().equals("") ) {
+            count++;
+            if (logic.Update(x, y, turn)) {
+                if (turn == 1) {
+                    button.setText("X");
+                    return true;
+                } else {
+                    button.setText("O");
+                    return true;
+                }
+            }
+            if (turn == 1) {
+                turn = 2;
+                button.setText("X");
+            } else {
+                turn = 1;
+                button.setText("O");
+            }
+
+            if (count == 9) {
+                return true;
+            }
         }
 
         return false;

@@ -26,6 +26,9 @@ public class Logic {
     }
 
     private boolean Check(int turn){
+
+
+
         for (int i=0; i<3; i++){
             if(field[0][i] == turn && field[1][i] == turn && field[2][i] == turn){
                 return true;
